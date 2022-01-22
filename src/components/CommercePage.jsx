@@ -45,6 +45,8 @@ const CommercePage = () => {
     commerce.products
       .list({
         category_slug: ["furniture"],
+        limit: 1,
+        page: 2,
       })
       .then((products) => {
         setProducts(products.data);

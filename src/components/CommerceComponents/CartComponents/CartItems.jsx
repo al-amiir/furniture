@@ -19,7 +19,7 @@ const CartItems = ({ cart, setCart }) => {
   return (
     <Box sx={{ margin: "15px" }}>
       {cart?.line_items?.map((c) => (
-        <Box sx={{ display: "flex", justifyContent: "start" }}>
+        <Box sx={{ display: "flex", justifyContent: "start", marginBottom: "10px" }}>
           {/* Image */}
           <Box sx={{ width: "100px", objectFit: "cover", border: "9px solid" }} component="img" src={c.image.url}></Box>
           {/* Content */}
@@ -41,16 +41,13 @@ const CartItems = ({ cart, setCart }) => {
               </Box>
             </p>
             <Box>
-              <Button onClick={() => commerce.cart.update(`${c.id}`, { quantity: c.quantity - 1 }).then((data) => setCart(data.cart))}>
-                <RemoveIcon />
-              </Button>
-              <Button onClick={() => commerce.cart.update(`${c.id}`, { quantity: c.quantity + 1 }).then((data) => setCart(data.cart))}>
-                <AddIcon />
-              </Button>
+              <RemoveIcon sx={{ cursor: "pointer", border: "2px solid black", marginRight: "2px" }} onClick={() => commerce.cart.update(`${c.id}`, { quantity: c.quantity - 1 }).then((data) => setCart(data.cart))} />
+              {/* <Button onClick={() => commerce.cart.update(`${c.id}`, { quantity: c.quantity - 1 }).then((data) => setCart(data.cart))}></Button> */}
+              <AddIcon sx={{ cursor: "pointer", border: "2px solid black", marginRight: "2px" }} onClick={() => commerce.cart.update(`${c.id}`, { quantity: c.quantity + 1 }).then((data) => setCart(data.cart))} />
+              {/* <Button onClick={() => commerce.cart.update(`${c.id}`, { quantity: c.quantity + 1 }).then((data) => setCart(data.cart))}></Button> */}
+              <DeleteIcon sx={{ cursor: "pointer", border: "2px solid", color: "#d10000" }} onClick={() => commerce.cart.remove(c.id).then((data) => setCart(data.cart))} />
             </Box>
-            <Button sx={{ border: "3px solid", width: "100%", color: "#d10000" }}>
-              <DeleteIcon />
-            </Button>
+            {/* <Button sx={{ border: "3px solid", width: "100%", color: "#d10000" }} onClick={() => commerce.cart.remove(c.id).then((data) => setCart(data.cart))}></Button> */}
           </Box>
         </Box>
       ))}
