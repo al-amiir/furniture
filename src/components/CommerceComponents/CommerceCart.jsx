@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+// Commerce
+import commerce from "../../lib/commerce";
+
 import { Box } from "@mui/system";
 import { Button } from "@mui/material";
 import CancelPresentationIcon from "@mui/icons-material/CancelPresentation";
 import { animateCart } from "../animation";
+import CartItems from "./CartComponents/CartItems";
 
-const CommerceCart = () => {
+const CommerceCart = ({ cart, setCart }) => {
+  useEffect(() => {
+    commerce.cart.retrieve().then((cart) => {
+      setCart(cart);
+      console.log(cart);
+    });
+  }, []);
+  //   useEffect(() => {
+  //     commerce.cart.refresh().then((cart) => setCart(cart));
+  //   }, [cart]);
   return (
     <>
       {/* Cart */}
@@ -18,12 +31,14 @@ const CommerceCart = () => {
           Your Bag <span>(n)</span>
         </Box>
         {/* Content */}
-        <Box></Box>
+        <Box>
+          <CartItems setCart={setCart} cart={cart} />
+        </Box>
         {/* Footer */}
         <Box sx={{ padding: "5px 15px" }}>
           <Box sx={{ display: "flex", justifyContent: "space-between", fontSize: "1.5rem" }}>
             <p>Total Proce:</p>
-            <p>$15,00</p>
+            <p>{cart?.subtotal?.formatted_with_symbol}</p>
           </Box>
 
           <Box>

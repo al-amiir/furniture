@@ -5,7 +5,10 @@ import AddBusinessSharpIcon from "@mui/icons-material/AddBusinessSharp";
 import anime from "animejs/lib/anime.es.js";
 import { animateCart } from "../animation";
 
-const Commercecard = ({ info }) => {
+// Commerce
+import commerce from "../../lib/commerce";
+
+const CommerceCard = ({ info, cart, setCart }) => {
   function handlecardText(direction) {
     // anime({
     //   targets: `#${info.id}`,
@@ -15,9 +18,13 @@ const Commercecard = ({ info }) => {
     //   duration: 400,
     // });
   }
-  useEffect(() => {
-    console.log(info);
-  }, [info]);
+  // Add To Cart Function
+  function handleAddToCart(e) {
+    animateCart("normal");
+    commerce.cart.add(`${info.id}`, 1).then((data) => setCart(data.cart));
+    // console.log(cart);
+  }
+
   return (
     <Box sx={{ position: "relative", width: "300px", height: "200px", border: "9px solid", display: "flex", flexDirection: "column", marginBottom: "60px" }}>
       {/* IMAGE */}
@@ -31,7 +38,7 @@ const Commercecard = ({ info }) => {
         </p>
       </Box>
       <Box sx={{ position: "absolute", right: 0, bottom: 0, display: "flex", flexDirection: "column" }}>
-        <AddBusinessSharpIcon onClick={() => animateCart("normal")} color="success" fontSize="large" sx={{ backgroundColor: "black", padding: "5px", borderRadius: "1px", border: "2px solid black", filter: " saturate(4)", cursor: "pointer" }} />
+        <AddBusinessSharpIcon onClick={handleAddToCart} color="success" fontSize="large" sx={{ backgroundColor: "black", padding: "5px", borderRadius: "1px", border: "2px solid black", filter: " saturate(4)", cursor: "pointer" }} />
       </Box>
       <Box sx={{ position: "absolute", bottom: "-64px", left: " -9px", width: "100%", backgroundColor: "#610000", border: " 9px solid", textAlign: "center" }}>
         <Button fullWidth sx={{ color: "wheat", letterSpacing: "4px" }}>
@@ -42,7 +49,7 @@ const Commercecard = ({ info }) => {
   );
 };
 
-export default Commercecard;
+export default CommerceCard;
 // active: true
 // assets: [{…}]
 // attributes: []
