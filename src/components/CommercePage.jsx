@@ -4,16 +4,20 @@ import commerce from "../lib/commerce";
 import CommerceCard from "./CommerceComponents/CommerceCard";
 import CommerceCart from "./CommerceComponents/CommerceCart";
 import CommerceFilter from "./CommerceComponents/CommerceFilter";
+import CommercePagination from "./CommerceComponents/CommercePagination";
+import NavigationBar from "./NavigationBar";
 
 const CommercePage = () => {
   const [products, setProducts] = useState([]);
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(6);
   const [filteredArray, setFilteredArray] = useState([]);
   const [filterObj, setFilterObj] = useState({});
   const [cart, setCart] = useState({});
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [page]);
 
   // useEffect(() => {
   //   console.log(filteredArray);
@@ -45,12 +49,11 @@ const CommercePage = () => {
     commerce.products
       .list({
         category_slug: ["furniture"],
-        limit: 1,
-        page: 2,
+        limit: limit,
+        page: page,
       })
       .then((products) => {
         setProducts(products.data);
-        // console.log(products.data);
       })
       .catch((error) => {
         console.log("There was an error fetching the products", error);
@@ -59,10 +62,11 @@ const CommercePage = () => {
 
   return (
     <>
+      <NavigationBar />
       <CommerceCart cart={cart} setCart={setCart} />
-      <Box sx={{ width: "100vw", height: "100vh", maxHeight: "fit-content", display: "flex" }}>
+      <Box sx={{ maxHeight: "fit-content", display: "flex" }}>
         <CommerceFilter setFilterObj={setFilterObj} />
-        <Box sx={{ display: "grid", gridTemplateColumns: " 1fr 1fr", gridGap: "10px" }}>
+        <Box sx={{ display: "grid", gridTemplateRows: "min-content", gridTemplateColumns: { xs: "1fr", md: "repeat(2,1fr)", lg: "repeat(3,1fr)", xl: "repeat(4,1fr)" }, gridGap: "10px" }}>
           {filteredArray.length > 0
             ? filteredArray?.map((p) =>
                 p.price.raw <= filterObj.price ? (
@@ -82,6 +86,7 @@ const CommercePage = () => {
                   ""
                 )
               )}
+          <CommercePagination setPage={setPage} limit={limit} sx={{ gridColumn: "1/-1" }} />
         </Box>
       </Box>
     </>

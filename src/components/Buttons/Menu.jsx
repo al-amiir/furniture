@@ -4,6 +4,9 @@ import { Box } from "@mui/system";
 import { Button } from "@mui/material";
 import anime from "animejs/lib/anime.es.js";
 
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
+
 const Menu = () => {
   const [menuCondition, setMenuCondition] = useState(true);
 
@@ -33,15 +36,14 @@ const Menu = () => {
 
   return (
     <>
-      <Box sx={{ position: "fixed", right: "1vw", top: "3vh", zIndex: 3000, display: "flex", flexDirection: "column", overflow: "hidden", width: "60px", height: "30px" }}>
-        <Button className="menuButton" onClick={handleClickMenu} sx={{ transition: ".3s", display: `${menuCondition ? "initial" : "none"}` }}>
-          Menu
+      <Button className="menuButton" onClick={handleClickMenu} sx={{ color: "black" }}>
+        <MenuIcon />
+      </Button>
+
+      <Box className="menuContent" sx={{ position: "fixed", top: "0vh", left: 0, height: "100vh", width: "100vw", zIndex: 4000, display: `${menuCondition ? "none" : "grid"}`, gridTemplateRows: "repeat(5,20vh)", gridTemplateColumns: "repeat(2,1fr)" }}>
+        <Button className="closeButton" onClick={handleCloseMenu} sx={{ position: "absolute" }}>
+          <CloseIcon />
         </Button>
-        <Button className="closeButton" onClick={handleCloseMenu}>
-          Close
-        </Button>
-      </Box>
-      <Box className="menuContent" sx={{ position: "fixed", top: "0vh", left: 0, height: "100vh", width: "100vw", zIndex: 2000, display: `${menuCondition ? "none" : "grid"}`, gridTemplateRows: "repeat(5,20vh)", gridTemplateColumns: "repeat(2,1fr)" }}>
         <Box className="menuContent-text" sx={{ display: "flex", opacity: 0, flexDirection: "column", zIndex: 1, gridRow: "2/-1" }}>
           <Button sx={{ color: "#c31233", fontSize: "4rem", fontWeight: 600 }}>Home</Button>
           <Button sx={{ color: "#c31233", fontSize: "4rem", fontWeight: 600 }}>Products</Button>

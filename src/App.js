@@ -22,7 +22,7 @@ const App = () => {
       </Suspense> */}
       <CommercePage />
 
-      <Menu />
+      {/* <Menu /> */}
       <CopyRights />
     </div>
   );

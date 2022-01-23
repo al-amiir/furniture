@@ -22,7 +22,37 @@ const FilterColor = ({ setFilterObj }) => {
       <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
         <Typography>Color</Typography>
       </AccordionSummary>
-      <AccordionDetails>
+      <AccordionDetails sx={{ backgroundColor: "#50083a" }}>
+        <Checkbox
+          value="white"
+          onClick={(e) => handleCheckboxClick(e)}
+          sx={{
+            color: "white",
+            "&.Mui-checked": {
+              color: "white",
+            },
+          }}
+        />
+        <Checkbox
+          value="pink"
+          onClick={(e) => handleCheckboxClick(e)}
+          sx={{
+            color: "#f78fa2",
+            "&.Mui-checked": {
+              color: "#f78fa2",
+            },
+          }}
+        />
+        <Checkbox
+          value=""
+          onClick={(e) => handleCheckboxClick(e)}
+          sx={{
+            color: "wheat",
+            "&.Mui-checked": {
+              color: "wheat",
+            },
+          }}
+        />
         <Checkbox
           value="red"
           onClick={(e) => handleCheckboxClick(e)}
@@ -81,6 +111,16 @@ const FilterColor = ({ setFilterObj }) => {
             color: "purple",
             "&.Mui-checked": {
               color: "purple",
+            },
+          }}
+        />
+        <Checkbox
+          value="brown"
+          onClick={(e) => handleCheckboxClick(e)}
+          sx={{
+            color: "#8a3e09",
+            "&.Mui-checked": {
+              color: "#8a3e09",
             },
           }}
         />

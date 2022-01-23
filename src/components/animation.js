@@ -3,7 +3,7 @@ import anime from "animejs/lib/anime.es.js";
 export function animateCart(direction) {
   anime({
     targets: ".cart",
-    right: ["-31vw", "0vw"],
+    right: ["-400px", "0px"],
     direction: `${direction}`,
     easing: "easeOutQuad",
     duration: 500,
