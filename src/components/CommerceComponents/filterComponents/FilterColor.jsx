@@ -15,10 +15,10 @@ const FilterColor = ({ setFilterObj }) => {
     e.target.checked ? setColorValues((prev) => [...prev, e.target.value]) : setColorValues((prev) => prev.filter((p) => p !== e.target.value));
   }
   useEffect(() => {
-    setFilterObj((prev) => ({ ...prev, color: [colorValues] }));
+    setFilterObj((prev) => ({ ...prev, color: colorValues }));
   }, [colorValues]);
   return (
-    <Accordion sx={{ width: "200px", border: "9px solid" }}>
+    <Accordion sx={{ width: "200px", border: "9px solid black" }}>
       <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
         <Typography>Color</Typography>
       </AccordionSummary>

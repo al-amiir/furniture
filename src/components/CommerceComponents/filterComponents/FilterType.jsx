@@ -17,10 +17,10 @@ const FilterType = ({ setFilterObj }) => {
     if (e.target.checked === false) setTypeValues((prev) => prev.filter((p) => p !== e.target.value));
   }
   useEffect(() => {
-    setFilterObj((prev) => ({ ...prev, type: [typeValues] }));
+    setFilterObj((prev) => ({ ...prev, type: typeValues }));
   }, [typeValues]);
   return (
-    <Accordion sx={{ width: "200px", border: "9px solid" }}>
+    <Accordion sx={{ width: "200px", border: "9px solid black" }}>
       <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
         <Typography>Product Type</Typography>
       </AccordionSummary>

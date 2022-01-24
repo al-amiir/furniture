@@ -20,7 +20,7 @@ const FilterSlider = ({ setFilterObj }) => {
   }, [value]);
 
   return (
-    <Accordion sx={{ width: "200px", border: "9px solid" }}>
+    <Accordion sx={{ width: "200px", border: "9px solid black" }}>
       <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
         <Typography>Price</Typography>
       </AccordionSummary>

@@ -7,7 +7,7 @@ import FilterSlider from "./filterComponents/FilterSlider";
 
 const CommerceFilter = ({ setFilterObj }) => {
   return (
-    <Box sx={{ padding: "10px", margin: "20px" }}>
+    <Box sx={{ padding: "10px", margin: "20px", height: "100vh" }}>
       <FilterType setFilterObj={setFilterObj} />
       <FilterColor setFilterObj={setFilterObj} />
       <FilterSlider setFilterObj={setFilterObj} />
