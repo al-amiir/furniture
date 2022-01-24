@@ -1,4 +1,7 @@
+import { Box } from "@mui/system";
 import React, { Suspense, useState, useEffect } from "react";
+import { Routes, Route, Link } from "react-router-dom";
+
 import Menu from "./components/Buttons/Menu";
 import CommercePage from "./components/CommercePage";
 // import Home from "./components/Home";
@@ -20,9 +23,22 @@ const App = () => {
       {/* <Suspense fallback={<Loader type="bars" color="red" />}>
         <Home />
       </Suspense> */}
-      <CommercePage />
+      {/* <CommercePage /> */}
 
-      {/* <Menu /> */}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Suspense fallback={<Loader type="bars" color="red" />}>
+              <Box sx={{ position: "fixed", zIndex: 1000, right: 0 }}>
+                <Menu color="wheat" />
+              </Box>
+              <Home />
+            </Suspense>
+          }
+        />
+        <Route path="/products" element={<CommercePage />} />
+      </Routes>
       <CopyRights />
     </div>
   );

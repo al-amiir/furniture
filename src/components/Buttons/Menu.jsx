@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Routes, Route, Link } from "react-router-dom";
 
 import { Box } from "@mui/system";
 import { Button } from "@mui/material";
@@ -7,7 +8,7 @@ import anime from "animejs/lib/anime.es.js";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 
-const Menu = () => {
+const Menu = ({ color }) => {
   const [menuCondition, setMenuCondition] = useState(true);
 
   function menuAnimation(direction) {
@@ -36,7 +37,7 @@ const Menu = () => {
 
   return (
     <>
-      <Button className="menuButton" onClick={handleClickMenu} sx={{ color: "black" }}>
+      <Button className="menuButton" onClick={handleClickMenu} sx={{ color: `${color}` }}>
         <MenuIcon />
       </Button>
 
@@ -45,8 +46,12 @@ const Menu = () => {
           <CloseIcon />
         </Button>
         <Box className="menuContent-text" sx={{ display: "flex", opacity: 0, flexDirection: "column", zIndex: 1, gridRow: "2/-1" }}>
-          <Button sx={{ color: "#c31233", fontSize: "4rem", fontWeight: 600 }}>Home</Button>
-          <Button sx={{ color: "#c31233", fontSize: "4rem", fontWeight: 600 }}>Products</Button>
+          <Link to="/">
+            <Button sx={{ color: "#c31233", fontSize: "4rem", fontWeight: 600 }}>Home</Button>
+          </Link>
+          <Link to="/products">
+            <Button sx={{ color: "#c31233", fontSize: "4rem", fontWeight: 600 }}>Products</Button>
+          </Link>
           <Button sx={{ color: "#c31233", fontSize: "4rem", fontWeight: 600 }}>About Us</Button>
           <Button sx={{ color: "#c31233", fontSize: "4rem", fontWeight: 600 }}>Contact</Button>
           <Button sx={{ color: "#c31233", fontSize: "4rem", fontWeight: 600 }}>Creator</Button>
