@@ -64,7 +64,7 @@ const CommercePage = () => {
     <>
       <NavigationBar />
       <CommerceCart cart={cart} setCart={setCart} />
-      <Box sx={{ maxHeight: "fit-content", display: "flex" }}>
+      <Box sx={{ height: "auto", maxHeight: "fit-content", display: "flex", backgroundColor: "#2F7B7F", paddingTop: "20px" }}>
         <CommerceFilter setFilterObj={setFilterObj} />
         <Box sx={{ display: "grid", gridTemplateRows: "min-content", gridTemplateColumns: { xs: "1fr", md: "repeat(2,1fr)", lg: "repeat(3,1fr)", xl: "repeat(4,1fr)" }, gridGap: "10px" }}>
           {filteredArray.length > 0

@@ -20,7 +20,7 @@ const CommerceCart = ({ cart, setCart }) => {
   return (
     <>
       {/* Cart */}
-      <Box className="cart" sx={{ position: "fixed", top: "0", right: "-400px", height: "98vh", zIndex: 4000, backgroundColor: "wheat", border: " 9px solid", boxShadow: "0 0 20px 3px black" }}>
+      <Box className="cart" sx={{ position: "fixed", width: 265, top: "0", right: "-400px", height: "98vh", zIndex: 4000, backgroundColor: "wheat", border: " 9px solid", boxShadow: "0 0 20px 3px black" }}>
         {/* Close Button */}
         <Box sx={{ position: "absolute", right: "9px" }}>
           <CancelPresentationIcon onClick={() => animateCart("reverse")} fontSize="large" />
@@ -31,7 +31,7 @@ const CommerceCart = ({ cart, setCart }) => {
         </Box>
         {/* Content */}
         <Box>
-          <Virtuoso style={{ height: "400px" }} totalCount={1} itemContent={(index) => <CartItems setCart={setCart} cart={cart} />} />
+          <Virtuoso style={{ height: "400px", marginBottom: "4px" }} totalCount={1} itemContent={(index) => <CartItems setCart={setCart} cart={cart} />} />
         </Box>
         {/* Footer */}
         <Box sx={{ padding: "5px 15px", borderTop: "9px solid" }}>

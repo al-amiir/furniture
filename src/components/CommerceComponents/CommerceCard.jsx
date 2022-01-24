@@ -2,11 +2,13 @@ import { Button } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect } from "react";
 import AddBusinessSharpIcon from "@mui/icons-material/AddBusinessSharp";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
 import anime from "animejs/lib/anime.es.js";
-import { animateCart } from "../animation";
-
+import { animateCart, circlePath } from "../animation";
+import CardDetails from "./CardComponents/CardDetails";
 // Commerce
 import commerce from "../../lib/commerce";
+import AddToCardButton from "./CartComponents/AddToCardButton";
 
 const CommerceCard = ({ info, cart, setCart }) => {
   function handlecardText(direction) {
@@ -18,33 +20,39 @@ const CommerceCard = ({ info, cart, setCart }) => {
     //   duration: 400,
     // });
   }
-  // Add To Cart Function
-  function handleAddToCart(e) {
-    animateCart("normal");
-    commerce.cart.add(`${info.id}`, 1).then((data) => setCart(data.cart));
-    // console.log(cart);
-  }
+  // // Add To Cart Function
+  // function handleAddToCart(e) {
+  //   animateCart("normal");
+  //   commerce.cart.add(`${info.id}`, 1).then((data) => setCart(data.cart));
+  //   // console.log(cart);
+  // }
 
   return (
-    <Box sx={{ position: "relative", width: "300px", height: "200px", border: "9px solid", display: "flex", flexDirection: "column", marginBottom: "60px" }}>
+    <Box sx={{ position: "relative", display: "flex", flexDirection: "column", border: "9px solid black " }}>
       {/* IMAGE */}
-      <Box onMouseEnter={() => handlecardText("normal")} onMouseLeave={() => handlecardText("reverse")} onTouchStart={() => console.log("touched")} component="img" src={info.image.url} sx={{ width: "100%", height: "100%", objectFit: "cover" }}></Box>
-      <Box id={info.id} sx={{ position: "absolute", width: "105px", top: 0, left: "-17px", height: "80%", backgroundColor: "white", margin: "10px 0px", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", overflow: "hidden", border: "9px solid black" }}>
-        <p>{info.name}</p>
-        <p>{info.description}</p>
-        <p>
-          <span>{info.price.formatted_with_symbol}</span>
-          <span></span>
-        </p>
+      <Box onMouseEnter={() => handlecardText("normal")} onMouseLeave={() => handlecardText("reverse")} onTouchStart={() => console.log("touched")} component="img" src={info.image.url} sx={{ height: "170px", objectFit: "cover" }}></Box>
+      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", backgroundColor: "#C65126", color: "black", padding: "8px" }}>
+        <div>
+          <Box>{info.name}</Box>
+          <Box>{info.description}</Box>
+          <Box>
+            <span>{info.price.formatted_with_symbol}</span>
+            <span></span>
+          </Box>
+        </div>
+        <Box sx={{ width: "100px", display: "flex", justifyContent: "space-around", alignItems: "center", backgroundColor: "black", padding: "10px", borderRadius: "5px", boxShadow: "0 0 6px black" }}>
+          <MenuBookIcon
+            onClick={() => {
+              circlePath(`${info.id}`, 0, 100);
+            }}
+            fontSize="large"
+            sx={{ cursor: "pointer", color: "#ffa300" }}
+          />
+          <AddToCardButton info={info} setCart={setCart} />
+          {/* <AddBusinessSharpIcon onClick={handleAddToCart} fontSize="large" sx={{ cursor: "pointer", color: "#04b500" }} /> */}
+        </Box>
       </Box>
-      <Box sx={{ position: "absolute", right: 0, bottom: 0, display: "flex", flexDirection: "column" }}>
-        <AddBusinessSharpIcon onClick={handleAddToCart} color="success" fontSize="large" sx={{ backgroundColor: "black", padding: "5px", borderRadius: "1px", border: "2px solid black", filter: " saturate(4)", cursor: "pointer" }} />
-      </Box>
-      <Box sx={{ position: "absolute", bottom: "-64px", left: " -9px", width: "100%", backgroundColor: "#610000", border: " 9px solid", textAlign: "center" }}>
-        <Button fullWidth sx={{ color: "wheat", letterSpacing: "4px" }}>
-          More Details
-        </Button>
-      </Box>
+      <CardDetails info={info} cart={cart} setCart={setCart} />
     </Box>
   );
 };

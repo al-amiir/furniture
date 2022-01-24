@@ -4,9 +4,10 @@ import { Box } from "@mui/system";
 import commerce from "../../../lib/commerce";
 
 // Icons
-import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
+import PlusToCartButton from "./PlusToCartButton";
+import MinusToCart from "./MinusToCart";
 
 const CartItems = ({ cart, setCart }) => {
   //   const [cart, setCart] = useState({});
@@ -41,13 +42,10 @@ const CartItems = ({ cart, setCart }) => {
               </Box>
             </p>
             <Box>
-              <RemoveIcon sx={{ cursor: "pointer", border: "2px solid black", marginRight: "2px" }} onClick={() => commerce.cart.update(`${c.id}`, { quantity: c.quantity - 1 }).then((data) => setCart(data.cart))} />
-              {/* <Button onClick={() => commerce.cart.update(`${c.id}`, { quantity: c.quantity - 1 }).then((data) => setCart(data.cart))}></Button> */}
-              <AddIcon sx={{ cursor: "pointer", border: "2px solid black", marginRight: "2px" }} onClick={() => commerce.cart.update(`${c.id}`, { quantity: c.quantity + 1 }).then((data) => setCart(data.cart))} />
-              {/* <Button onClick={() => commerce.cart.update(`${c.id}`, { quantity: c.quantity + 1 }).then((data) => setCart(data.cart))}></Button> */}
+              <MinusToCart info={c} setCart={setCart} />
+              <PlusToCartButton info={c} setCart={setCart} />
               <DeleteIcon sx={{ cursor: "pointer", border: "2px solid", color: "#d10000" }} onClick={() => commerce.cart.remove(c.id).then((data) => setCart(data.cart))} />
             </Box>
-            {/* <Button sx={{ border: "3px solid", width: "100%", color: "#d10000" }} onClick={() => commerce.cart.remove(c.id).then((data) => setCart(data.cart))}></Button> */}
           </Box>
         </Box>
       ))}

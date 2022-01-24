@@ -16,3 +16,14 @@ export function animateCart(direction) {
     duration: 500,
   });
 }
+
+export function circlePath(id, n1, n2) {
+  anime({
+    targets: `#${id}`,
+    keyframes: [
+      { clipPath: `circle(${n1}%)` }, // start frame
+      { clipPath: `circle(${n2}%)` }, // end frame
+    ],
+    easing: "easeOutQuad",
+  });
+}
