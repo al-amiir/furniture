@@ -12,7 +12,7 @@ import NavigationBar from "./NavigationBar";
 const CommercePage = () => {
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(6);
+  const [limit, setLimit] = useState(12);
   const [filteredArray, setFilteredArray] = useState([]);
   const [filterObj, setFilterObj] = useState({});
   const [cart, setCart] = useState({});
@@ -70,7 +70,7 @@ const CommercePage = () => {
               <Loader type="bars" color="red" />
             </Box>
           ) : (
-            <Box sx={{ display: "grid", gridTemplateRows: "min-content", gridTemplateColumns: { xs: "1fr", md: "repeat(2,1fr)", lg: "repeat(3,1fr)", xl: "repeat(4,1fr)" }, gridGap: "10px" }}>
+            <Box sx={{ display: "grid", gridTemplateRows: "min-content", gridTemplateColumns: { xs: "1fr", sm: "repeat(2,1fr)", md: "repeat(3,1fr)", lg: "repeat(4,1fr)", xl: "repeat(5,1fr)" }, gridGap: "10px" }}>
               {filteredArray.length > 0 ? (
                 filteredArray?.map((p) =>
                   p.price.raw <= filterObj.price ? (

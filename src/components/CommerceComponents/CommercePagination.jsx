@@ -21,7 +21,7 @@ const CommercePagination = ({ setPage, limit }) => {
   };
   return (
     <Box sx={{ display: "flex", justifyContent: "center", margin: "20px 0px", gridColumn: "1/-1" }}>
-      <Pagination onChange={handleChange} count={count} showFirstButton showLastButton color="success" sx={{ border: "3px solid", padding: "10px", borderRadius: "6px" }} />
+      <Pagination onChange={handleChange} count={count} showFirstButton showLastButton color="success" sx={{ border: "3px solid", padding: "10px", borderRadius: "6px", backgroundColor: "wheat" }} />
     </Box>
   );
 };

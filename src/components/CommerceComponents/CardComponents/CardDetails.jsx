@@ -16,22 +16,38 @@ import PlusToCartButton from "../CartComponents/PlusToCartButton";
 import "./main.css";
 
 const CardDetails = ({ info, cart, setCart }) => {
-  const images = [
-    {
-      original: "https://picsum.photos/id/1018/1000/600/",
-      thumbnail: "https://picsum.photos/id/1018/250/150/",
-    },
-    {
-      original: "https://picsum.photos/id/1015/1000/600/",
-      thumbnail: "https://picsum.photos/id/1015/250/150/",
-    },
-    {
-      original: "https://picsum.photos/id/1019/1000/600/",
-      thumbnail: "https://picsum.photos/id/1019/250/150/",
-    },
-  ];
+  //   console.log(info);
+  const [images, setImages] = useState([]);
+  useEffect(() => {
+    info.assets.map((inf) => {
+      console.log({ inf });
+      setImages((prev) => [
+        ...prev,
+        {
+          original: inf.url,
+          thumbnail: inf.url,
+        },
+      ]);
+    });
+    console.log(images);
+  }, [info]);
+
+  //   const images = [
+  //     {
+  //       original: "https://picsum.photos/id/1018/1000/600/",
+  //       thumbnail: "https://picsum.photos/id/1018/250/150/",
+  //     },
+  //     {
+  //       original: "https://picsum.photos/id/1015/1000/600/",
+  //       thumbnail: "https://picsum.photos/id/1015/250/150/",
+  //     },
+  //     {
+  //       original: "https://picsum.photos/id/1019/1000/600/",
+  //       thumbnail: "https://picsum.photos/id/1019/250/150/",
+  //     },
+  //   ];
   return (
-    <Box id={info.id} sx={{ position: "fixed", top: 0, left: 0, zIndex: 1, clipPath: "circle(0%)", overflow: "hidden", width: "100vw", height: "100vh", backgroundColor: "#f7a53061", backdropFilter: "blur(5px)", display: "flex", justifyContent: "center", alignItems: "center" }}>
+    <Box id={info.id} sx={{ position: "fixed", top: 0, left: 0, zIndex: 1, width: "0vw", overflow: "hidden", height: "100vh", backgroundColor: "#f7a53061", backdropFilter: "blur(5px)", display: "flex", justifyContent: "center", alignItems: "center" }}>
       <Box sx={{ position: "relative", display: "flex", flexDirection: { xs: "column", md: "row" }, alignItems: "end", backgroundColor: "#ffa500", border: "9px solid", padding: "20px" }}>
         <Box sx={{ width: "300px", border: "9px solid black", backgroundColor: "black" }}>
           <ImageGallery items={images} showPlayButton={false} showNav={false} />
@@ -40,9 +56,7 @@ const CardDetails = ({ info, cart, setCart }) => {
         <Box sx={{ width: "300px", paddingLeft: "10px" }}>
           <Box sx={{ fontSize: "3rem", borderBottom: "1px solid", display: "flex", justifyContent: "space-between" }}>
             {info.name}
-            {/* <Button sx={{ border: "1px solid black", boxShadow: "0 0 10px black" }} size="small"  */}
             <CloseFullscreenIcon fontSize="large" sx={{ color: "black", border: "2px solid", boxShadow: "0 0 10px black", borderRadius: "3px", cursor: "pointer" }} onClick={() => circlePath(`${info.id}`, 100, 0)} />
-            {/* </Button> */}
           </Box>
           <Box sx={{ fontSize: "1.3rem", margin: "10px" }}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam voluptatum, doloremque earum voluptatibus dolore, in atque debitis error quisquam enim facere quaerat minus nisi quae a eveniet, laboriosam sunt nobis?</Box>
           <Box sx={{ fontSize: "1.3rem", borderBottom: "1px solid" }}>available colors:</Box>

@@ -17,7 +17,7 @@ const Footer = () => {
           </Box>
         </Box>
 
-        <Box sx={{ display: "flex", justifyContent: "space-between", padding: "20px" }}>
+        <Box sx={{ display: "flex", justifyContent: "space-between", padding: "20px", backgroundColor: "#0c281d" }}>
           {/* Left */}
           <Box>
             <Box sx={{ display: "flex", alignItems: "center", fontSize: "2rem", letterSpacing: "2px" }}>

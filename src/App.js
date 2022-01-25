@@ -12,7 +12,7 @@ const Home = React.lazy(() => import("./components/Home"));
 
 const App = () => {
   return (
-    <Box sx={{ padding: 0, margin: 0, fontFamily: "'Yanone Kaffeesatz', sans-serif", display: "flex", flexDirection: "column" }}>
+    <Box sx={{ padding: 0, margin: 0, fontFamily: "'Yanone Kaffeesatz', sans-serif", display: "flex", flexDirection: "column", overflow: "hidden" }}>
       <Routes>
         <Route
           path="/"

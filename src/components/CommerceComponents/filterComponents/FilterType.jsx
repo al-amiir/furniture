@@ -20,7 +20,7 @@ const FilterType = ({ setFilterObj }) => {
     setFilterObj((prev) => ({ ...prev, type: typeValues }));
   }, [typeValues]);
   return (
-    <Accordion sx={{ width: "200px", border: "9px solid black" }}>
+    <Accordion sx={{ width: "200px", border: "9px solid black", backgroundColor: "wheat" }}>
       <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
         <Typography>Product Type</Typography>
       </AccordionSummary>
