@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, NavLink } from "react-router-dom";
 
 import { Box } from "@mui/system";
 import { Button } from "@mui/material";
@@ -7,6 +7,7 @@ import anime from "animejs/lib/anime.es.js";
 
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import { AddBoxOutlined } from "@mui/icons-material";
 
 const Menu = ({ color }) => {
   const [menuCondition, setMenuCondition] = useState(true);
@@ -42,19 +43,65 @@ const Menu = ({ color }) => {
       </Button>
 
       <Box className="menuContent" sx={{ position: "fixed", top: "0vh", left: 0, height: "100vh", width: "100vw", zIndex: 4000, display: `${menuCondition ? "none" : "grid"}`, gridTemplateRows: "repeat(5,20vh)", gridTemplateColumns: "repeat(2,1fr)" }}>
-        <Button className="closeButton" onClick={handleCloseMenu} sx={{ position: "absolute" }}>
+        <Button className="closeButton" onClick={handleCloseMenu} sx={{ position: "absolute", right: "1vw", transform: "scale(1)", top: "3vh", color: "crimson" }}>
           <CloseIcon />
         </Button>
-        <Box className="menuContent-text" sx={{ display: "flex", opacity: 0, flexDirection: "column", zIndex: 1, gridRow: "2/-1" }}>
-          <Link to="/">
-            <Button sx={{ color: "#c31233", fontSize: "4rem", fontWeight: 600 }}>Home</Button>
-          </Link>
-          <Link to="/products">
-            <Button sx={{ color: "#c31233", fontSize: "4rem", fontWeight: 600 }}>Products</Button>
-          </Link>
-          <Button sx={{ color: "#c31233", fontSize: "4rem", fontWeight: 600 }}>About Us</Button>
-          <Button sx={{ color: "#c31233", fontSize: "4rem", fontWeight: 600 }}>Contact</Button>
-          <Button sx={{ color: "#c31233", fontSize: "4rem", fontWeight: 600 }}>Creator</Button>
+
+        {/* Menu Links  */}
+        <Box className="menuContent-text" sx={{ opacity: 0, zIndex: 1, display: "flex", justifyContent: "center", gridRow: "2/4" }}>
+          <Box sx={{ color: "white", fontSize: "2rem", letterSpacing: ".5rem" }}> FURNITURE </Box>
+          <Box sx={{ marginTop: "50px" }}>
+            <NavLink
+              to="/"
+              style={({ isActive }) => {
+                return {
+                  textDecoration: isActive ? "line-through crimson" : "none",
+                };
+              }}
+            >
+              <Box sx={{ color: "#c31233", fontSize: "2rem", marginBottom: "5px" }}>Home</Box>
+            </NavLink>
+            <NavLink
+              to="/products"
+              style={({ isActive }) => {
+                return {
+                  textDecoration: isActive ? "line-through crimson" : "none",
+                };
+              }}
+            >
+              <Box sx={{ color: "#c31233", fontSize: "2rem", marginBottom: "5px" }}>Products</Box>
+            </NavLink>
+
+            <Box sx={{ color: "#c31233", fontSize: "2rem", marginBottom: "5px" }}>About Us</Box>
+            <Box sx={{ color: "#c31233", fontSize: "2rem", marginBottom: "5px" }}>Contact</Box>
+            <Box sx={{ color: "#c31233", fontSize: "2rem", marginBottom: "5px" }}>Creator</Box>
+          </Box>
+        </Box>
+
+        <Box className="menuContent-text" sx={{ opacity: 0, zIndex: 1, display: "flex", justifyContent: "start", gridRow: "2/3", gridColumn: "2/3" }}>
+          <Box sx={{ color: "#a86d00", fontSize: "1.3rem", marginRight: "20px" }}>
+            <Box sx={{ marginBottom: "20px", width: "130px", color: "wheat" }}>Phone</Box>
+            <Box>+2(0123456789)</Box>
+            <Box>+2(0123456789)</Box>
+            <Box>+2(0123456789)</Box>
+          </Box>
+          <Box sx={{ color: "#a86d00", fontSize: "1.3rem" }}>
+            <Box sx={{ marginBottom: "20px", color: "wheat" }}>Email</Box>
+            <Box>furniture@gmail.com</Box>
+          </Box>
+        </Box>
+        <Box className="menuContent-text" sx={{ opacity: 0, zIndex: 1, display: "flex", justifyContent: "start", gridRow: "4/5", gridColumn: "2/3" }}>
+          <Box sx={{ color: "#a86d00", fontSize: "1.3rem", marginRight: "20px" }}>
+            <Box sx={{ marginBottom: "20px", width: "130px", color: "wheat" }}>Branches</Box>
+            <Box>alexandria</Box>
+            <Box>cairo</Box>
+            <Box>port-said</Box>
+            <Box>damiate</Box>
+          </Box>
+          <Box sx={{ color: "#a86d00", fontSize: "1.3rem" }}>
+            <Box sx={{ marginBottom: "20px", color: "wheat" }}>Main Address</Box>
+            <Box>Cairo, Nasr-City, 45-street, villa-5</Box>
+          </Box>
         </Box>
       </Box>
     </>

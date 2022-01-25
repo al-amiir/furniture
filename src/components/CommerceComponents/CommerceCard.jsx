@@ -28,18 +28,18 @@ const CommerceCard = ({ info, cart, setCart }) => {
   // }
 
   return (
-    <Box sx={{ position: "relative", display: "flex", flexDirection: "column", border: "9px solid black " }}>
+    <Box sx={{ position: "relative", width: "200px", display: "flex", flexDirection: "column", border: "9px solid black " }}>
       {/* IMAGE */}
       <Box onMouseEnter={() => handlecardText("normal")} onMouseLeave={() => handlecardText("reverse")} onTouchStart={() => console.log("touched")} component="img" src={info.image.url} sx={{ height: "170px", objectFit: "cover" }}></Box>
-      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", backgroundColor: "#C65126", color: "black", padding: "8px" }}>
-        <div>
+      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", backgroundColor: "#832300", color: "wheat", padding: "8px", borderTop: "9px solid black" }}>
+        <Box sx={{ fontSize: "1.1rem", filter: "drop-shadow(2px 4px 6px black)" }}>
           <Box>{info.name}</Box>
-          <Box>{info.description}</Box>
+          {/* <Box>{info.description}</Box> */}
           <Box>
             <span>{info.price.formatted_with_symbol}</span>
             <span></span>
           </Box>
-        </div>
+        </Box>
         <Box sx={{ width: "100px", display: "flex", justifyContent: "space-around", alignItems: "center", backgroundColor: "black", padding: "10px", borderRadius: "5px", boxShadow: "0 0 6px black" }}>
           <MenuBookIcon
             onClick={() => {

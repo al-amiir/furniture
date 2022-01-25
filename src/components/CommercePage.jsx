@@ -5,6 +5,7 @@ import CommerceCard from "./CommerceComponents/CommerceCard";
 import CommerceCart from "./CommerceComponents/CommerceCart";
 import CommerceFilter from "./CommerceComponents/CommerceFilter";
 import CommercePagination from "./CommerceComponents/CommercePagination";
+import Footer from "./Footer";
 import Loader from "./Loader";
 import NavigationBar from "./NavigationBar";
 
@@ -101,6 +102,7 @@ const CommercePage = () => {
           <CommercePagination setPage={setPage} limit={limit} setProducts={setProducts} />
         </Box>
       </Box>
+      <Footer />
     </>
   );
 };

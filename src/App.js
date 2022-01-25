@@ -11,27 +11,15 @@ import Loader from "./components/Loader";
 const Home = React.lazy(() => import("./components/Home"));
 
 const App = () => {
-  const [loaderDisplay, setLoaderDisplay] = useState("flex");
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setLoaderDisplay("none");
-  //   }, 10000);
-  // }, [loaderDisplay]);
   return (
-    <div style={{ padding: 0, margin: 0, fontFamily: "'Yanone Kaffeesatz', sans-serif" }}>
-      {/* <Loader type="bars" color="red" loaderDisplay={loaderDisplay} /> */}
-      {/* <Suspense fallback={<Loader type="bars" color="red" />}>
-        <Home />
-      </Suspense> */}
-      {/* <CommercePage /> */}
-
+    <Box sx={{ padding: 0, margin: 0, fontFamily: "'Yanone Kaffeesatz', sans-serif", display: "flex", flexDirection: "column" }}>
       <Routes>
         <Route
           path="/"
           element={
             <Suspense fallback={<Loader type="bars" color="red" />}>
-              <Box sx={{ position: "fixed", zIndex: 1000, right: 0 }}>
-                <Menu color="wheat" />
+              <Box sx={{ position: "fixed", zIndex: 1000, right: "1vw", top: "3vh" }}>
+                <Menu color="crimson" />
               </Box>
               <Home />
             </Suspense>
@@ -39,8 +27,9 @@ const App = () => {
         />
         <Route path="/products" element={<CommercePage />} />
       </Routes>
+
       <CopyRights />
-    </div>
+    </Box>
   );
 };
 
