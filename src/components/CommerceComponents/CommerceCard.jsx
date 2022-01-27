@@ -20,6 +20,7 @@ const CommerceCard = ({ info, cart, setCart }) => {
     //   duration: 400,
     // });
   }
+  console.log({ info });
   // // Add To Cart Function
   // function handleAddToCart(e) {
   //   animateCart("normal");

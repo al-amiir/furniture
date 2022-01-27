@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 // Commerce
 import commerce from "../../lib/commerce";
+import { Link } from "react-router-dom";
 
 import { Box } from "@mui/system";
 import { Button } from "@mui/material";
@@ -14,7 +15,6 @@ const CommerceCart = ({ cart, setCart }) => {
   useEffect(() => {
     commerce.cart.retrieve().then((cart) => {
       setCart(cart);
-      console.log(cart);
     });
   }, []);
   return (
@@ -41,7 +41,9 @@ const CommerceCart = ({ cart, setCart }) => {
           </Box>
 
           <Box>
-            <Button sx={{ border: "1px solid", backgroundColor: "green", color: "black", marginRight: "10px" }}>Checkout</Button>
+            <Link to="/shipping" style={{ textDecoration: "none" }}>
+              <Button sx={{ border: "1px solid", backgroundColor: "green", color: "black", marginRight: "10px" }}>Checkout</Button>
+            </Link>
             <Button sx={{ border: "1px solid", backgroundColor: "#ff3a3a", color: "black" }} onClick={() => commerce.cart.empty().then((data) => setCart(data.cart))}>
               Clear Cart
             </Button>

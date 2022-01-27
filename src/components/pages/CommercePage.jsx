@@ -1,21 +1,20 @@
 import { Box, grid } from "@mui/system";
 import React, { useState, useEffect } from "react";
-import commerce from "../lib/commerce";
-import CommerceCard from "./CommerceComponents/CommerceCard";
-import CommerceCart from "./CommerceComponents/CommerceCart";
-import CommerceFilter from "./CommerceComponents/CommerceFilter";
-import CommercePagination from "./CommerceComponents/CommercePagination";
-import Footer from "./Footer";
-import Loader from "./Loader";
-import NavigationBar from "./NavigationBar";
+import commerce from "../../lib/commerce";
+import CommerceCard from "../CommerceComponents/CommerceCard";
+import CommerceCart from "../CommerceComponents/CommerceCart";
+import CommerceFilter from "../CommerceComponents/CommerceFilter";
+import CommercePagination from "../CommerceComponents/CommercePagination";
+import Footer from "../Footer";
+import Loader from "../Loader";
+import NavigationBar from "../NavigationBar";
 
-const CommercePage = () => {
+const CommercePage = ({ cart, setCart }) => {
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(12);
   const [filteredArray, setFilteredArray] = useState([]);
   const [filterObj, setFilterObj] = useState({});
-  const [cart, setCart] = useState({});
   const [loading, setLoading] = useState(0);
 
   useEffect(() => {

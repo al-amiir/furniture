@@ -20,7 +20,7 @@ const CardDetails = ({ info, cart, setCart }) => {
   const [images, setImages] = useState([]);
   useEffect(() => {
     info.assets.map((inf) => {
-      console.log({ inf });
+      // console.log({ inf });
       setImages((prev) => [
         ...prev,
         {
@@ -29,7 +29,7 @@ const CardDetails = ({ info, cart, setCart }) => {
         },
       ]);
     });
-    console.log(images);
+    // console.log(images);
   }, [info]);
 
   //   const images = [

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Routes, Route, Link, NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 import { Box } from "@mui/system";
 import { Button } from "@mui/material";
@@ -7,7 +7,6 @@ import anime from "animejs/lib/anime.es.js";
 
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import { AddBoxOutlined } from "@mui/icons-material";
 
 const Menu = ({ color }) => {
   const [menuCondition, setMenuCondition] = useState(true);

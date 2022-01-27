@@ -1,19 +1,22 @@
-import { Box } from "@mui/system";
-import React, { Suspense, useState, useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import React, { Suspense, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
+import { Box } from "@mui/system";
 import Menu from "./components/Buttons/Menu";
-import CommercePage from "./components/CommercePage";
-// import Home from "./components/Home";
 import CopyRights from "./components/CopyRights";
 import Loader from "./components/Loader";
 
-const Home = React.lazy(() => import("./components/Home"));
+const Home = React.lazy(() => import("./components/pages/Home"));
+const CommercePage = React.lazy(() => import("./components/pages/CommercePage"));
+const ShipingPage = React.lazy(() => import("./components/pages/ShipingPage"));
 
 const App = () => {
+  const [cart, setCart] = useState({});
+
   return (
     <Box sx={{ padding: 0, margin: 0, fontFamily: "'Yanone Kaffeesatz', sans-serif", display: "flex", flexDirection: "column", overflow: "hidden" }}>
       <Routes>
+        {/* Home  */}
         <Route
           path="/"
           element={
@@ -25,7 +28,24 @@ const App = () => {
             </Suspense>
           }
         />
-        <Route path="/products" element={<CommercePage />} />
+        {/* Products  */}
+        <Route
+          path="/products"
+          element={
+            <Suspense fallback={<Loader type="bars" color="red" />}>
+              <CommercePage cart={cart} setCart={setCart} />
+            </Suspense>
+          }
+        />
+        {/* Shipping */}
+        <Route
+          path="/shipping"
+          element={
+            <Suspense fallback={<Loader type="bars" color="red" />}>
+              <ShipingPage cart={cart} />
+            </Suspense>
+          }
+        />
       </Routes>
 
       <CopyRights />

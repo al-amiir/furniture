@@ -1,6 +1,6 @@
 import { Box } from "@mui/system";
 import React, { useState, useEffect } from "react";
-import Intro from "./Home-Components/Intro";
+import Intro from "../Home-Components/Intro";
 
 const Home = () => {
   return (

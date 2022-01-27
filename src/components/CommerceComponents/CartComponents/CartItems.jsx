@@ -10,13 +10,6 @@ import PlusToCartButton from "./PlusToCartButton";
 import MinusToCart from "./MinusToCart";
 
 const CartItems = ({ cart, setCart }) => {
-  //   const [cart, setCart] = useState({});
-  //   useEffect(() => {
-  //     commerce.cart.contents().then((cart) => {
-  //       setCart(cart);
-  //       console.log(cart);
-  //     });
-  //   }, []);
   return (
     <Box sx={{ margin: "15px" }}>
       {cart?.line_items?.map((c) => (
