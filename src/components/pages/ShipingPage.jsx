@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import CustomerInformation from "../ShippingComponents/CustomerInformation";
+import PaymentForm from "../ShippingComponents/PaymentForm";
 
 const ShipingPage = ({ cart }) => {
   // stepper
@@ -107,8 +108,8 @@ const ShipingPage = ({ cart }) => {
   };
 
   return (
-    <div>
-      {activeStep === 0 ? <CustomerInformation checkoutToken={checkoutToken} setOrderDetails={setOrderDetails} setActiveStep={setActiveStep} /> : ""}
+    <>
+      {activeStep === 0 ? <CustomerInformation checkoutToken={checkoutToken} setOrderDetails={setOrderDetails} setActiveStep={setActiveStep} /> : <PaymentForm />}
       <MobileStepper
         variant="progress"
         steps={6}
@@ -128,7 +129,7 @@ const ShipingPage = ({ cart }) => {
           </Button>
         }
       />
-    </div>
+    </>
   );
 };
 

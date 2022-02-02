@@ -94,6 +94,14 @@ const InformationForm = ({ checkoutToken, setOrderDetails, setActiveStep }) => {
               </Field>
             </FormControl>
 
+            <img src="https://img.icons8.com/external-prettycons-lineal-color-prettycons/98/000000/external-credit-card-shopping-prettycons-lineal-color-prettycons-4.png" />
+            <Box sx={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gridGap: "10px", marginBottom: "10px" }}>
+              {/* ------------- Credit Card --------------- */}
+              <Field component={TextField} label="Credit Name" name="firstName" type="text" placeholder="Al Amir Abdull Fattah" />
+              <Field component={TextField} label="Card Number" name="phone" type="number" placeholder="4242 4242 4242 4242" />
+              <Field component={TextField} label="Expiration (mm/yy)" name="phone" type="number" placeholder="09/22" />
+              <Field component={TextField} label="Security Code" name="address" type="number" placeholder="###" />
+            </Box>
             <Box sx={{ margin: "5px 0px", padding: "10px", display: "flex", justifyContent: "end", width: "96%" }}>
               <Button onClick={props.handleReset} variant="contained" color="error" sx={{ marginRight: "5px" }}>
                 Reset
