@@ -3,7 +3,6 @@ import { Button } from "@mui/material";
 import { Box } from "@mui/system";
 import anime from "animejs/lib/anime.es.js";
 import Loader from "../Loader";
-import introVideo from "../../material/intro-video.mp4";
 const Intro = ({ counter }) => {
   const word = "FURNITURE".split("");
   useEffect(() => {

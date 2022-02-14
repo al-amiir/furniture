@@ -20,10 +20,6 @@ export function animateCart(direction) {
 export function circlePath(id, n1, n2) {
   anime({
     targets: `#${id}`,
-    // keyframes: [
-    //   { clipPath: `circle(${n1}%)` }, // start frame
-    //   { clipPath: `circle(${n2}%)` }, // end frame
-    // ],
     width: [`${n1}vw`, `${n2}vw`],
     easing: "easeOutQuad",
   });
