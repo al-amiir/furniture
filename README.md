@@ -10,6 +10,9 @@ Details
 - View single product's details
 - Add to cart, increase quantity & decrease
 
+##Video
+https://youtu.be/4EFq7s8OoWc
+
 With
 
 - React-js
