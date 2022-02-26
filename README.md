@@ -2,7 +2,7 @@
 
 an E-commerce web app that uses 3D in intro & Commerce.js to fetch data from & create cart data to the store
 
-Details
+## Details
 
 - Fetching data from commerce.js
 - Pagination control
@@ -13,8 +13,7 @@ Details
 ## Video
 https://youtu.be/4EFq7s8OoWc
 
-With
-
+## With
 - React-js
 - React-Router
 - React-MUI
